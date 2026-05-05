@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lebane · Product Recap · Abril 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue:      #125BFF;
+      --blue-800:  #0546D8;
+      --blue-700:  #296BFE;
+      --blue-500:  #B5C4FC;
+      --blue-300:  #E2E8FE;
+      --blue-200:  #F5F7FF;
+      --black:     #181A21;
+      --white:     #FFFFFF;
+      --green:     #0ED776;
+      --green-700: #0BA85C;
+      --green-200: #E2FDF0;
+      --red:       #FE3D51;
+      --red-200:   #FEE8E7;
+      --yellow:    #F5C34D;
+      --yellow-200:#FEFBEE;
+      --pink:      #E770FA;
+      --text:      #181A21;
+      --text-2:    #6B7280;
+      --border:    #E2E8FE;
+      --surface:   #F5F7FF;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+      background: var(--white);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── STICKY NAV ───────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: 56px;
+      display: flex; align-items: center;
+      padding: 0 48px;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 9px;
+    }
+    .logo-name {
+      font-size: 16px; font-weight: 600; color: var(--black);
+    }
+    .nav-pill {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--blue-200);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 12px; font-weight: 600; color: var(--blue);
+      letter-spacing: 0.02em;
+    }
+    .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+    /* ── COVER ────────────────────────────────────────── */
+    .cover {
+      background: var(--black);
+      min-height: 86vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 88px 48px;
+      position: relative; overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 700px 500px at 25% 60%, rgba(18,91,255,.22) 0%, transparent 60%),
+        radial-gradient(ellipse 500px 400px at 78% 30%, rgba(14,215,118,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 400px 300px at 50% 100%, rgba(18,91,255,.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cover-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+
+    .cover-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 18px;
+      background: rgba(18,91,255,.14);
+      border: 1px solid rgba(18,91,255,.28);
+      border-radius: 999px;
+      font-size: 12px; font-weight: 600;
+      color: #8BABFF;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+    .cover-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #6B96FF; }
+
+    .cover-h {
+      font-size: 96px; font-weight: 700;
+      letter-spacing: -4px; line-height: 0.95;
+      color: var(--white); margin-bottom: 20px;
+    }
+    .cover-h span { color: #3B7AFF; }
+
+    .cover-sub {
+      font-size: 18px; font-weight: 400;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 48px; line-height: 1.5;
+    }
+
+    .cover-chips {
+      display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+    }
+    .cover-chip {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.55);
+      padding: 7px 18px; border-radius: 999px;
+      font-size: 13px; font-weight: 500;
+    }
+
+    /* ── LAYOUT ───────────────────────────────────────── */
+    .band-alt { background: var(--surface); }
+    .inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 88px 48px;
+    }
+    .inner-sm { max-width: 1200px; margin: 0 auto; padding: 72px 48px; }
+
+    .eye {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 600; color: var(--blue);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .eye-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+    .sh {
+      font-size: 40px; font-weight: 600;
+      letter-spacing: -0.6px; line-height: 1.15;
+      color: var(--black); margin-bottom: 8px;
+    }
+    .ssub {
+      font-size: 17px; font-weight: 400;
+      color: var(--text-2); margin-bottom: 48px;
+      line-height: 1.55; max-width: 540px;
+    }
+
+    /* ── CARD ─────────────────────────────────────────── */
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .card-p  { padding: 28px; }
+    .card-pl { padding: 36px 40px; }
+
+    /* ── METRIC CARDS ─────────────────────────────────── */
+    .m-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .m-card {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 28px;
+    }
+    .m-card-blue {
+      background: var(--blue);
+      border-color: var(--blue-800);
+    }
+    .m-card-blue .m-eyebrow { color: rgba(255,255,255,0.75); }
+    .m-card-blue .m-eyebrow::before { background: rgba(255,255,255,0.75); }
+    .m-card-blue .m-num { color: #fff; }
+    .m-card-blue .m-desc { color: rgba(255,255,255,0.65); }
+
+    .m-card-dark {
+      background: var(--black);
+      border-color: var(--black);
+    }
+    .m-card-dark .m-eyebrow { color: rgba(255,255,255,0.55); }
+    .m-card-dark .m-eyebrow::before { background: rgba(255,255,255,0.55); }
+    .m-card-dark .m-num { color: #fff; }
+    .m-card-dark .m-desc { color: rgba(255,255,255,0.5); }
+
+    .m-eyebrow {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600; color: var(--blue);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .m-eyebrow::before {
+      content: ''; display: block; width: 5px; height: 5px;
+      border-radius: 50%; background: var(--blue);
+    }
+    .m-num {
+      font-size: 54px; font-weight: 700;
+      letter-spacing: -2.5px; line-height: 1;
+      color: var(--black); margin-bottom: 8px;
+    }
+    .m-num.c-blue  { color: var(--blue); }
+    .m-num.c-green { color: var(--green-700); }
+    .m-num.c-amber { color: #B45309; }
+    .m-desc { font-size: 14px; color: var(--text-2); font-weight: 500; line-height: 1.4; }
+
+    /* ── STATUS TRIO ──────────────────────────────────── */
+    .st-trio {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 24px;
+    }
+    .st { border-radius: 10px; padding: 20px; text-align: center; }
+    .st.g { background: var(--green-200); }
+    .st.y { background: var(--yellow-200); }
+    .st.r { background: var(--red-200); }
+    .st-n { font-size: 36px; font-weight: 700; letter-spacing: -1px; }
+    .st.g .st-n { color: var(--green-700); }
+    .st.y .st-n { color: #92400E; }
+    .st.r .st-n { color: var(--red); }
+    .st-l { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+    .st.g .st-l { color: var(--green-700); }
+    .st.y .st-l { color: #92400E; }
+    .st.r .st-l { color: var(--red); }
+
+    /* Progress strip */
+    .pstrip {
+      height: 7px; border-radius: 4px;
+      display: flex; overflow: hidden; gap: 2px;
+      margin-bottom: 32px;
+    }
+    .pstrip div {
+      transition: flex 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .pstrip.collapsed div { flex: 0 !important; }
+
+    /* ── ITEM TABLE ───────────────────────────────────── */
+    .tbl-head {
+      display: grid; grid-template-columns: 12px 1fr 56px 220px;
+      gap: 14px; padding: 0 16px 10px;
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--text-2);
+    }
+    .t-row {
+      display: grid; grid-template-columns: 12px 1fr 56px 220px;
+      gap: 14px; align-items: start;
+      padding: 16px; border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      margin-bottom: 6px;
+      transition: background 0.15s;
+    }
+    .t-row:hover { background: var(--blue-200); }
+
+    .sdot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 3px;
+    }
+    .sdot.g { background: var(--green); }
+    .sdot.y { background: var(--yellow); }
+    .sdot.r { background: var(--red); }
+
+    .i-name    { font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 4px; line-height: 1.3; }
+    .i-comment { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+
+    .badge { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; white-space: nowrap; display: inline-block; }
+    .b0    { background: var(--red-200); color: var(--red); }
+    .b1    { background: var(--blue-300); color: var(--blue-800); }
+
+    .i-note { font-size: 12px; color: var(--text-2); line-height: 1.5; }
+
+    /* ── BARS ─────────────────────────────────────────── */
+    .bars { display: flex; flex-direction: column; gap: 20px; }
+    .b-item { display: flex; flex-direction: column; gap: 7px; }
+    .b-hdr  { display: flex; justify-content: space-between; }
+    .b-name { font-size: 14px; font-weight: 600; color: var(--black); }
+    .b-val  { font-size: 13px; font-weight: 600; color: var(--text-2); }
+    .b-track { height: 9px; background: var(--blue-200); border-radius: 5px; overflow: hidden; }
+    .b-fill  {
+      height: 100%; border-radius: 5px; width: 0;
+      transition: width 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ── DONUT ────────────────────────────────────────── */
+    .donut-wrap { position: relative; width: 180px; height: 180px; margin: 0 auto 20px; }
+    .donut-c    { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .dc-n { font-size: 30px; font-weight: 700; letter-spacing: -1px; color: var(--black); }
+    .dc-l { font-size: 12px; color: var(--text-2); }
+
+    /* ── LEGEND ───────────────────────────────────────── */
+    .leg       { display: flex; gap: 20px; flex-wrap: wrap; }
+    .leg-item  { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--text-2); }
+    .leg-dot   { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── HIGHLIGHTS ───────────────────────────────────── */
+    .hi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .hi-card {
+      background: var(--white); border-radius: 12px;
+      border: 1px solid var(--border); padding: 28px;
+      border-top: 3px solid var(--blue);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .hi-eye   { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); margin-bottom: 10px; }
+    .hi-title { font-size: 16px; font-weight: 600; color: var(--black); margin-bottom: 8px; line-height: 1.3; }
+    .hi-desc  { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+
+    /* ── SPLIT BAR ────────────────────────────────────── */
+    .split-bar { height: 10px; border-radius: 5px; display: flex; overflow: hidden; gap: 2px; margin: 28px 0 16px; }
+    .split-bar div { transition: flex 1.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    .split-bar.collapsed div { flex: 0 !important; }
+    .effort-n  { font-size: 56px; font-weight: 700; letter-spacing: -2.5px; line-height: 1; }
+
+    /* ── DIVIDER ──────────────────────────────────────── */
+    .div { height: 1px; background: var(--border); }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 48px;
+      text-align: center;
+      font-size: 13px; color: var(--text-2);
+    }
+
+    /* ── SCROLL ANIMATIONS ────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px) scale(0.985);
+      transition:
+        opacity  0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0) scale(1); }
+    .d1 { transition-delay: 0.07s; }
+    .d2 { transition-delay: 0.14s; }
+    .d3 { transition-delay: 0.21s; }
+    .d4 { transition-delay: 0.28s; }
+    .d5 { transition-delay: 0.35s; }
+    .d6 { transition-delay: 0.42s; }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 860px) {
+      .m-grid    { grid-template-columns: repeat(2, 1fr); }
+      .hi-grid   { grid-template-columns: 1fr; }
+      .cover-h   { font-size: 58px; }
+      .tbl-head  { display: none; }
+      .t-row     { grid-template-columns: 12px 1fr 48px; }
+      .i-note    { display: none; }
+      .nav       { padding: 0 24px; }
+      .inner, .inner-sm { padding: 64px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ████ NAV ████ -->
+<nav class="nav">
+  <div class="logo">
+    <img src="lebanelogo.png" height="34" alt="Lebane" style="display:block;">
+  </div>
+  <div class="nav-pill">
+    <div class="nav-dot"></div>
+    Equipo de Producto y Tecnología · Abril 2026
+  </div>
+</nav>
+
+<!-- ████ COVER ████ -->
+<section class="cover">
+  <div class="cover-inner">
+    <div class="cover-badge">
+      <div class="cover-badge-dot"></div>
+      Equipo de Producto y Tecnología · Q2 2026
+    </div>
+    <h1 class="cover-h">Abril <span>2026</span></h1>
+    <p class="cover-sub">Equipo de Producto y Tecnología · Alineación Roadmap Q2</p>
+    <div class="cover-chips">
+      <span class="cover-chip">Roadmap Q2 · 13 items</span>
+      <span class="cover-chip">Priorización interna · 8 puntos</span>
+      <span class="cover-chip">86 bugs cerrados</span>
+      <span class="cover-chip">8+ vistas con filtros</span>
+    </div>
+  </div>
+</section>
+
+<!-- ████ RESUMEN DE ABRIL ████ -->
+<div style="background:var(--blue);">
+  <div class="inner">
+    <div class="eye reveal" style="color:rgba(255,255,255,0.7);"><span class="eye-dot" style="background:rgba(255,255,255,0.7);"></span> Resumen de Abril</div>
+    <h2 class="sh reveal d1" style="color:#fff;">El mes en números</h2>
+    <p class="ssub reveal d2" style="color:rgba(255,255,255,0.55); margin-bottom:48px;">Los números que definen el mes del Equipo de Producto y Tecnología.</p>
+
+    <div class="m-grid">
+      <div class="m-card reveal d1" style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.15);">
+        <div class="m-eyebrow" style="color:rgba(255,255,255,0.7);">
+          <span style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.7);display:block;flex-shrink:0;"></span>
+          Bugs cerrados
+        </div>
+        <div class="m-num" style="color:#fff;" data-count="86">86</div>
+        <div class="m-desc" style="color:rgba(255,255,255,0.6);">En producción · 54 errors, 23 hotfixes, 9 regressions</div>
+      </div>
+      <div class="m-card reveal d2" style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.15);">
+        <div class="m-eyebrow" style="color:rgba(255,255,255,0.7);">
+          <span style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.7);display:block;flex-shrink:0;"></span>
+          Features entregadas
+        </div>
+        <div class="m-num" style="color:#0ED776;" data-count="7">7</div>
+        <div class="m-desc" style="color:rgba(255,255,255,0.6);">Funcionalidades completadas de punta a punta</div>
+      </div>
+      <div class="m-card reveal d3" style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.15);">
+        <div class="m-eyebrow" style="color:rgba(255,255,255,0.7);">
+          <span style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.7);display:block;flex-shrink:0;"></span>
+          Tickets totales
+        </div>
+        <div class="m-num" style="color:#fff;">~179</div>
+        <div class="m-desc" style="color:rgba(255,255,255,0.6);">Total del mes (bugs representan el 48%)</div>
+      </div>
+      <div class="m-card reveal d4" style="background:rgba(0,0,0,0.25); border-color:rgba(255,255,255,0.1);">
+        <div class="m-eyebrow" style="color:rgba(255,255,255,0.7);">
+          <span style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.7);display:block;flex-shrink:0;"></span>
+          Roadmap Q2
+        </div>
+        <div class="m-num" style="color:#fff;" data-count="46" data-suffix="%">46%</div>
+        <div class="m-desc" style="color:rgba(255,255,255,0.6);">Items con avance completo — 6 de 13</div>
+      </div>
+      <div class="m-card reveal d5" style="background:rgba(0,0,0,0.25); border-color:rgba(255,255,255,0.1);">
+        <div class="m-eyebrow" style="color:rgba(255,255,255,0.7);">
+          <span style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.7);display:block;flex-shrink:0;"></span>
+          Esfuerzo en calidad
+        </div>
+        <div class="m-num" style="color:#F5C34D;" data-count="48" data-suffix="%">48%</div>
+        <div class="m-desc" style="color:rgba(255,255,255,0.6);">Del total de tickets dedicado a bugs</div>
+      </div>
+      <div class="m-card reveal d6" style="background:rgba(0,0,0,0.25); border-color:rgba(255,255,255,0.1);">
+        <div class="m-eyebrow" style="color:rgba(255,255,255,0.7);">
+          <span style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.7);display:block;flex-shrink:0;"></span>
+          Vistas optimizadas
+        </div>
+        <div class="m-num" style="color:#0ED776;">8+</div>
+        <div class="m-desc" style="color:rgba(255,255,255,0.6);">Con filtros, buscador y export Excel</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ████ ESFUERZO ████ -->
+<div class="band-alt">
+  <div class="inner-sm">
+    <div class="eye reveal"><span class="eye-dot"></span> Equipo de Producto y Tecnología · Distribución del Esfuerzo</div>
+    <h2 class="sh reveal d1">Calidad vs Producto Nuevo</h2>
+    <p class="ssub reveal d2">Casi la mitad del mes fue resolución de bugs y estabilización de la plataforma.</p>
+
+    <div class="card card-pl reveal d3">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:center;">
+        <div>
+          <div style="display:flex; align-items:baseline; gap:6px; margin-bottom:8px;">
+            <span class="effort-n" style="color:var(--blue);">48%</span>
+            <span style="font-size:17px; font-weight:500; color:var(--text-2);">calidad</span>
+          </div>
+          <p style="font-size:15px; font-weight:600; color:var(--black); margin-bottom:6px;">Corrección de bugs y hotfixes</p>
+          <p style="font-size:14px; color:var(--text-2); line-height:1.6;">86 bugs cerrados: 54 errores de sistema, 23 correcciones urgentes, 9 regresiones. El área de Proveedores concentra el 47% de los problemas. Alineación AFIP/ARCA resuelta.</p>
+        </div>
+        <div>
+          <div style="display:flex; align-items:baseline; gap:6px; margin-bottom:8px;">
+            <span class="effort-n" style="color:var(--green-700);">52%</span>
+            <span style="font-size:17px; font-weight:500; color:var(--text-2);">features</span>
+          </div>
+          <p style="font-size:15px; font-weight:600; color:var(--black); margin-bottom:6px;">Nuevas funcionalidades y mejoras</p>
+          <p style="font-size:14px; color:var(--text-2); line-height:1.6;">~93 tickets de producto: Estado de Resultados, Conciliaciones V1, Trazabilidad, Filtros masivos, LENA, TXT IVA Compras, Base 0 V2.0 y más.</p>
+        </div>
+      </div>
+      <div class="split-bar" id="splitBar">
+        <div id="splitBlue" style="flex:48; background:var(--blue); border-radius:5px 0 0 5px;"></div>
+        <div id="splitGreen" style="flex:52; background:var(--green); border-radius:0 5px 5px 0;"></div>
+      </div>
+      <div class="leg">
+        <div class="leg-item"><div class="leg-dot" style="background:var(--blue);"></div> Calidad · 48% · 86 tickets</div>
+        <div class="leg-item"><div class="leg-dot" style="background:var(--green);"></div> Features · 52% · ~93 tickets</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ████ BUGS ████ -->
+<div>
+  <div class="inner-sm">
+    <div class="eye reveal"><span class="eye-dot"></span> Calidad y Estabilidad</div>
+    <h2 class="sh reveal d1">86 bugs cerrados</h2>
+    <p class="ssub reveal d2">Mayor volumen del mes · Proveedores concentra el 47% del total.</p>
+
+    <div class="card card-pl reveal d3" id="bugsCard">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:center;">
+        <div>
+          <div class="bars">
+            <div class="b-item">
+              <div class="b-hdr"><span class="b-name">Errores de sistema</span><span class="b-val" style="color:#0546D8;">54 · 63%</span></div>
+              <div class="b-track"><div class="b-fill" data-width="63%" style="background:#0546D8;"></div></div>
+            </div>
+            <div class="b-item">
+              <div class="b-hdr"><span class="b-name">Correcciones urgentes</span><span class="b-val" style="color:#B45309;">23 · 27%</span></div>
+              <div class="b-track"><div class="b-fill" data-width="27%" style="background:#F5A623;"></div></div>
+            </div>
+            <div class="b-item">
+              <div class="b-hdr"><span class="b-name">Regresiones</span><span class="b-val" style="color:var(--red);">9 · 10%</span></div>
+              <div class="b-track"><div class="b-fill" data-width="10%" style="background:var(--red);"></div></div>
+            </div>
+          </div>
+          <div style="margin-top:24px; padding:13px 16px; background:var(--green-200); border-radius:10px; display:flex; align-items:center; gap:8px; font-size:13px; color:var(--green-700); font-weight:500;">
+            <span style="width:7px;height:7px;border-radius:50%;background:var(--green-700);flex-shrink:0;display:block;"></span>
+            Proveedores: 40 bugs · TXT IVA Compras + AFIP/ARCA resueltos
+          </div>
+        </div>
+
+        <!-- Donut: 2π×65 ≈ 408 · errors 257 · hotfixes 109 · regressions 43 -->
+        <div>
+          <div class="donut-wrap">
+            <svg viewBox="0 0 180 180" width="180" height="180">
+              <circle cx="90" cy="90" r="65" fill="none" stroke="#EDEDFB" stroke-width="22"/>
+              <circle cx="90" cy="90" r="65" fill="none" stroke="#0546D8" stroke-width="22"
+                stroke-dasharray="257 151" stroke-dashoffset="0" transform="rotate(-90 90 90)"/>
+              <circle cx="90" cy="90" r="65" fill="none" stroke="#F5A623" stroke-width="22"
+                stroke-dasharray="109 299" stroke-dashoffset="-257" transform="rotate(-90 90 90)"/>
+              <circle cx="90" cy="90" r="65" fill="none" stroke="#FE3D51" stroke-width="22"
+                stroke-dasharray="43 365" stroke-dashoffset="-366" transform="rotate(-90 90 90)"/>
+            </svg>
+            <div class="donut-c">
+              <div class="dc-n">86</div>
+              <div class="dc-l">bugs</div>
+            </div>
+          </div>
+          <div class="leg" style="justify-content:center;">
+            <div class="leg-item"><div class="leg-dot" style="background:#0546D8;"></div>Errores</div>
+            <div class="leg-item"><div class="leg-dot" style="background:#F5A623;"></div>Urgentes</div>
+            <div class="leg-item"><div class="leg-dot" style="background:#FE3D51;"></div>Regresiones</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ████ ROADMAP Q2 ████ -->
+<div class="band-alt">
+  <div class="inner">
+    <div class="eye reveal"><span class="eye-dot"></span> Roadmap Q2 2026</div>
+    <h2 class="sh reveal d1">Estado de avance · 13 items</h2>
+    <p class="ssub reveal d2">Abril → Junio · Estado al cierre del mes.</p>
+
+    <div class="card card-p reveal d3">
+      <div class="st-trio">
+        <div class="st g"><div class="st-n">6</div><div class="st-l">Con avance · 46%</div></div>
+        <div class="st y"><div class="st-n">3</div><div class="st-l">Parcial · 23%</div></div>
+        <div class="st r"><div class="st-n">4</div><div class="st-l">Sin avance · 31%</div></div>
+      </div>
+      <div class="pstrip" id="roadmapStrip">
+        <div style="flex:6; background:var(--green); border-radius:4px 0 0 4px;"></div>
+        <div style="flex:3; background:var(--yellow);"></div>
+        <div style="flex:4; background:var(--red); border-radius:0 4px 4px 0;"></div>
+      </div>
+
+      <div class="tbl-head"><div></div><div>Item</div><div>Prior.</div><div>Nota</div></div>
+
+      <div class="t-row reveal">
+        <span class="sdot g"></span>
+        <div><div class="i-name">Corrección de Errores</div><div class="i-comment">Se cerraron 86 problemas de producción: errores de sistema, correcciones urgentes y regresiones. El área de Proveedores tuvo el mayor volumen. Se normalizó también la integración con AFIP/ARCA.</div></div>
+        <span class="badge b0">P0</span>
+        <div class="i-note">Mayor volumen del mes.</div>
+      </div>
+      <div class="t-row reveal d1">
+        <span class="sdot g"></span>
+        <div><div class="i-name">Filtros y Exportaciones en Tablas</div><div class="i-comment">Se agregaron filtros, buscador y descarga a Excel en más de 8 pantallas: Órdenes de Pedido, Órdenes de Compra, Tesorería, Cheques, Unidades, Cuenta Corriente, Conciliaciones y Retenciones.</div></div>
+        <span class="badge b0">P0</span>
+        <div class="i-note">Mayor cobertura de entregas.</div>
+      </div>
+      <div class="t-row reveal d2">
+        <span class="sdot g"></span>
+        <div><div class="i-name">Trazabilidad de Transacciones</div><div class="i-comment">Ahora se puede ver el historial completo de cada liquidación y Orden de Pedido: quién tocó el registro, cuándo y qué cambió. El equipo puede rastrear cualquier operación sin depender de correos o WhatsApp.</div></div>
+        <span class="badge b0">P0</span>
+        <div class="i-note">Historial visible en operaciones clave.</div>
+      </div>
+      <div class="t-row reveal d3">
+        <span class="sdot g"></span>
+        <div><div class="i-name">Estado de Resultado</div><div class="i-comment">La empresa puede ver en un solo lugar cómo le fue en el mes: ingresos por ventas, costos y resultado del ejercicio. Incluye export a Excel y PDF. Ya disponible para constructoras.</div></div>
+        <span class="badge b1">P1</span>
+        <div class="i-note">Entregado completo.</div>
+      </div>
+      <div class="t-row reveal d4">
+        <span class="sdot g"></span>
+        <div><div class="i-name">Conciliaciones Automáticas</div><div class="i-comment">V1 lista para producción: el equipo puede cerrar, re-abrir y anular conciliaciones, cambiar el resultado manualmente y validar que los períodos no se pisen. Se registra quién modificó cada conciliación, cuándo y desde qué sistema.</div></div>
+        <span class="badge b1">P1</span>
+        <div class="i-note">V1 completa. Lista para prod.</div>
+      </div>
+      <div class="t-row reveal d5">
+        <span class="sdot g"></span>
+        <div><div class="i-name">Base 0 V2.0</div><div class="i-comment">Se entregaron dos piezas: el nuevo template de base 0 y el armado manual. El módulo ya está disponible para uso.</div></div>
+        <span class="badge b1">P1</span>
+        <div class="i-note">Módulo disponible.</div>
+      </div>
+      <div class="t-row reveal d6">
+        <span class="sdot g"></span>
+        <div><div class="i-name">Bot WhatsApp V2 · LENA</div><div class="i-comment">Se lanzó LENA, la nueva versión del asistente. Es más comunicativo y ya habilita los primeros flujos de autorización por WhatsApp. Paso concreto hacia la V2 completa.</div></div>
+        <span class="badge b1">P1</span>
+        <div class="i-note">Primer paso de la V2.</div>
+      </div>
+      <div class="t-row reveal">
+        <span class="sdot y"></span>
+        <div><div class="i-name">Control Presupuestal</div><div class="i-comment">Las partidas presupuestales y la vinculación de rubros ya están listas. El módulo completo sale a fin de mayo.</div></div>
+        <span class="badge b1">P1</span>
+        <div class="i-note">Sale completo a fin de mayo.</div>
+      </div>
+      <div class="t-row reveal d1">
+        <span class="sdot y"></span>
+        <div><div class="i-name">Autorizaciones</div><div class="i-comment">LENA habilita la primera iteración de autorizaciones por WhatsApp. El flujo de autorizaciones como módulo independiente sigue en desarrollo.</div></div>
+        <span class="badge b1">P1</span>
+        <div class="i-note">Avance indirecto vía LENA.</div>
+      </div>
+      <div class="t-row reveal">
+        <span class="sdot r"></span>
+        <div><div class="i-name">Ambientes de Contabilidad</div><div class="i-comment">Sin movimiento en abril. Es el único item P0 sin ningún avance en el mes. Tiene permisos separados A/B con botón para ocultar el módulo, pero el desarrollo principal no arrancó.</div></div>
+        <span class="badge b0">P0</span>
+        <div class="i-note">Único P0 sin movimiento.</div>
+      </div>
+      <div class="t-row reveal d1">
+        <span class="sdot r"></span>
+        <div><div class="i-name">Dashboards · Métricas y Cashflow</div><div class="i-comment">Solo se corrigieron errores en los widgets actuales. Los dashboards personalizados de m², cashflow y rubros no arrancaron.</div></div>
+        <span class="badge b0">P0</span>
+        <div class="i-note">Sin avance real.</div>
+      </div>
+      <div class="t-row reveal d2">
+        <span class="sdot r"></span>
+        <div><div class="i-name">Módulo de Tareas V2</div><div class="i-comment">Sin avance en abril. Prioridad para el próximo mes.</div></div>
+        <span class="badge b1">P1</span>
+        <div class="i-note">Sin movimiento.</div>
+      </div>
+      <div class="t-row reveal d3">
+        <span class="sdot r"></span>
+        <div><div class="i-name">Login 2FA</div><div class="i-comment">Sin avance en abril. Es la prioridad para el módulo de pagos.</div></div>
+        <span class="badge b1">P1</span>
+        <div class="i-note">Prioritario para pagos.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ████ HIGHLIGHTS ████ -->
+<div>
+  <div class="inner">
+    <div class="eye reveal"><span class="eye-dot"></span> Equipo de Producto y Tecnología · Lo que salió bien</div>
+    <h2 class="sh reveal d1">Highlights del mes</h2>
+    <p class="ssub reveal d2">Las entregas más relevantes y completas de abril.</p>
+
+    <div class="hi-grid">
+      <div class="hi-card reveal d1">
+        <div class="hi-eye">Cerrado completo</div>
+        <div class="hi-title">Estado de Resultados</div>
+        <div class="hi-desc">La empresa puede ver ingresos, costos y resultado del ejercicio en un solo lugar. Exportable a Excel y PDF. Disponible para constructoras.</div>
+      </div>
+      <div class="hi-card reveal d2">
+        <div class="hi-eye">8+ pantallas</div>
+        <div class="hi-title">Filtros y exports masivos</div>
+        <div class="hi-desc">OP, OC, Tesorería, Cheques, Unidades, Cuenta Corriente, Conciliaciones y Retenciones. La entrega con mayor cobertura del mes.</div>
+      </div>
+      <div class="hi-card reveal d3">
+        <div class="hi-eye">V1 — Producción</div>
+        <div class="hi-title">Conciliaciones Automáticas</div>
+        <div class="hi-desc">Cerrar, re-abrir, anular, cambio manual y validación de fechas. Registro de quién tocó cada conciliación. Listo para producción.</div>
+      </div>
+      <div class="hi-card reveal d4">
+        <div class="hi-eye">Nuevo asistente</div>
+        <div class="hi-title">LENA lanzada</div>
+        <div class="hi-desc">La nueva versión del bot es más comunicativa y ya permite aprobar operaciones por WhatsApp. Primer paso real hacia la V2.</div>
+      </div>
+      <div class="hi-card reveal d5">
+        <div class="hi-eye">Cumplimiento fiscal</div>
+        <div class="hi-title">TXT IVA Compras · AFIP</div>
+        <div class="hi-desc">Se normalizaron los archivos de IVA para cumplimiento con AFIP: alícuotas, descuentos, Sujeto Exento y PDFs corregidos.</div>
+      </div>
+      <div class="hi-card reveal d6">
+        <div class="hi-eye">Módulo nuevo</div>
+        <div class="hi-title">Base 0 V2.0</div>
+        <div class="hi-desc">Template y armado manual disponibles. El módulo de presupuesto inicial ya está en producción.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ████ PRIORIZACIÓN INTERNA ████ -->
+<div class="band-alt">
+  <div class="inner">
+    <div class="eye reveal"><span class="eye-dot"></span> Equipo de Producto y Tecnología · Priorización Interna</div>
+    <h2 class="sh reveal d1">8 prioridades · Estado en abril</h2>
+    <p class="ssub reveal d2">Foco en calidad y completitud de flujos. 3 con avance sólido, 4 parciales, 1 sin entrega.</p>
+
+    <div class="card card-p reveal d3">
+      <div class="st-trio">
+        <div class="st g"><div class="st-n">3</div><div class="st-l">Con avance · 38%</div></div>
+        <div class="st y"><div class="st-n">4</div><div class="st-l">Parcial · 50%</div></div>
+        <div class="st r"><div class="st-n">1</div><div class="st-l">Sin avance · 13%</div></div>
+      </div>
+      <div class="pstrip" id="prioStrip">
+        <div style="flex:3; background:var(--green); border-radius:4px 0 0 4px;"></div>
+        <div style="flex:4; background:var(--yellow);"></div>
+        <div style="flex:1; background:var(--red); border-radius:0 4px 4px 0;"></div>
+      </div>
+
+      <div class="t-row reveal">
+        <span class="sdot g"></span>
+        <div><div class="i-name">#1 · Inconsistencias de saldos</div><div class="i-comment">86 bugs del mes apuntan aquí: mejoras en Cuenta Corriente Proveedores, Tesorería, Mayor, exportes y regeneración de saldos. Resolución estructural en progreso.</div></div>
+        <div></div>
+        <div class="i-note">Avance sostenido.</div>
+      </div>
+      <div class="t-row reveal d1">
+        <span class="sdot g"></span>
+        <div><div class="i-name">#2 · Trazabilidad de operaciones</div><div class="i-comment">Se entregó el historial de liquidaciones y Órdenes de Pedido. NC/ND con avance. Faltan: remitos, anticipos y saldos a cuenta.</div></div>
+        <div></div>
+        <div class="i-note">Buena cobertura. Pendiente completar.</div>
+      </div>
+      <div class="t-row reveal d2">
+        <span class="sdot g"></span>
+        <div><div class="i-name">#3 · Filtros en tablas + descargas Excel</div><div class="i-comment">La entrega con más cobertura del mes: 8+ pantallas con filtros, buscador y export. Pendiente: que los filtros se mantengan entre sesiones.</div></div>
+        <div></div>
+        <div class="i-note">Mayor entrega del mes.</div>
+      </div>
+      <div class="t-row reveal d3">
+        <span class="sdot r"></span>
+        <div><div class="i-name">#4 · Vincular y desvincular documentos</div><div class="i-comment">Sin avance sistemático. Esta prioridad apunta a poder vincular y desvincular: facturas con comprobantes de pago, órdenes de compra con facturas, y órdenes de pedido con órdenes de compra.</div></div>
+        <div></div>
+        <div class="i-note">Sin avance en el mes.</div>
+      </div>
+      <div class="t-row reveal d4">
+        <span class="sdot r"></span>
+        <div><div class="i-name">#5 · Dashboards personalizados</div><div class="i-comment">Sin desarrollo propio. Solo correcciones de errores en los indicadores actuales. Las vistas de m², rubros por período y cashflow no arrancaron.</div></div>
+        <div></div>
+        <div class="i-note">Sin avance.</div>
+      </div>
+      <div class="t-row reveal">
+        <span class="sdot y"></span>
+        <div><div class="i-name">#6 · Onboarding + egreso simplificado MX</div><div class="i-comment">Ajustes de nomenclatura, moneda por defecto y textos para México y España. El flujo de onboarding y egreso simplificado como módulo no tuvo entrega completa.</div></div>
+        <div></div>
+        <div class="i-note">Ajustes puntuales. Flujo pendiente.</div>
+      </div>
+      <div class="t-row reveal d1">
+        <span class="sdot y"></span>
+        <div><div class="i-name">#7 · Cierre de flujos existentes</div><div class="i-comment">Avances en NC/ND, cancelación de saldo OC/OP y certificados por monto. Interés por mora y descuentos transversales siguen abiertos.</div></div>
+        <div></div>
+        <div class="i-note">Avances puntuales. Sin cierre total.</div>
+      </div>
+      <div class="t-row reveal d2">
+        <span class="sdot g"></span>
+        <div><div class="i-name">#8 · Consistencia archivos TXT</div><div class="i-comment">Foco en el TXT de IVA Compras: se resolvieron diferencias de alícuotas, error de importación, desalineación por descuentos y canje. Alineación completa con AFIP.</div></div>
+        <div></div>
+        <div class="i-note">Alineación AFIP resuelta.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="margin-bottom:8px;">
+    <img src="lebanelogo.png" height="22" alt="Lebane" style="display:block; margin:0 auto;">
+  </div>
+  Lebane · Equipo de Producto y Tecnología · Alineación Roadmap Q2 · Abril 2026
+</footer>
+
+<script>
+  // ── RE-TRIGGERING SCROLL ANIMATIONS ────────────────────
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        // Animate counters inside this element
+        e.target.querySelectorAll('[data-count]').forEach(animateCounter);
+        // Animate bars inside this element
+        e.target.querySelectorAll('.b-fill[data-width]').forEach(animateBar);
+      } else {
+        e.target.classList.remove('in');
+        // Reset bars so they animate again next time
+        e.target.querySelectorAll('.b-fill[data-width]').forEach(bar => {
+          bar.style.transition = 'none';
+          bar.style.width = '0%';
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            bar.style.transition = '';
+          }));
+        });
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // Animate bugs card bars when the card comes into view
+  const bugsObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.b-fill[data-width]').forEach(animateBar);
+      } else {
+        e.target.querySelectorAll('.b-fill[data-width]').forEach(bar => {
+          bar.style.transition = 'none';
+          bar.style.width = '0%';
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            bar.style.transition = '';
+          }));
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+
+  const bugsCard = document.getElementById('bugsCard');
+  if (bugsCard) bugsObs.observe(bugsCard);
+
+  // ── COUNTER ANIMATION ──────────────────────────────────
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const prefix = el.dataset.prefix || '';
+    const duration = 900;
+    const start = performance.now();
+
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = prefix + Math.round(target * ease) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = prefix + Math.round(target) + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ── BAR ANIMATION ──────────────────────────────────────
+  function animateBar(bar) {
+    bar.style.width = '0%';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      bar.style.width = bar.dataset.width;
+    }));
+  }
+</script>
+
+</body>
+</html>
